@@ -14,13 +14,13 @@ KEETHさんのブログ・ニュースレター執筆ミッション用ワーク
 - Substack（月額8ドル／年額80ドル有料プランあり）：独自トーンのエッセイ。
 - note全文公開（無料記事）：集客用・軽めの気づき系。メンバーシップ加入への導線。
 
-各チャネルの構成・トーン・文字数ルールは `.claude/skills/note-writing/SKILL.md` を参照。
+各チャネルの構成・トーン・文字数ルールは `.claude/skills/note-writing/references/channel-templates.md` を参照。
 
 ## ワークフロー
 
 1. Cowork側の週次スケジュールタスクでネタ候補3案が出る
 2. KEETHさんがネタを選び，音声ダンプを `drafts/raw/` 配下に保存する（例: `drafts/raw/2026-08-10_980.md`）。チャネルが決まっていない場合はファイル名に入れなくてよい
-3. `hearing-agent` が音声ダンプ内の理由・背景が言語化されていない感情表現をピックアップし，質問を返す。**チャネル未指定の場合は，ダンプ内容からどのチャネル向きかを評価して提案する**（判定基準は `.claude/skills/note-writing/SKILL.md` の「チャネル判定について」）
+3. `hearing-agent` が音声ダンプ内の理由・背景が言語化されていない感情表現をピックアップし，質問を返す。**チャネル未指定の場合は，ダンプ内容からどのチャネル向きかを評価して提案する**（判定基準は `.claude/skills/note-writing/references/channel-selection.md`）
 4. KEETHさんの回答を踏まえ `formatter` がチャネル別テンプレートで整形する
 5. `fact-checker` が検証可能な事実のみをチェックし，誤りがあれば訂正案を出す
 6. 最終稿を `drafts/ai/` 内で確定する。公開はKEETHさんが手動で行う（自動投稿はしない）
@@ -30,14 +30,17 @@ KEETHさんのブログ・ニュースレター執筆ミッション用ワーク
 
 どれが人間の生素材で，どれがAIの清書稿なのかをディレクトリだけで判別できるようにする。
 
-| ディレクトリ | 中身 | 書き手 |
-| --- | --- | --- |
-| `drafts/raw/` | 音声ダンプ（喋ったままの文字起こし） | 人間 |
-| `drafts/ai/` | チャネル別テンプレートで整形した清書稿 | AI |
-| `drafts/archive/` | 公開済み記事の元になったダンプ | 人間 |
-| `published/` | 公開済みの最終稿 | AI（清書稿がそのまま） |
+| ディレクトリ | 中身 | 書き手 | git |
+| --- | --- | --- | --- |
+| `drafts/raw/` | 音声ダンプ（喋ったままの文字起こし） | 人間 | 管理外 |
+| `drafts/ai/` | チャネル別テンプレートで整形した清書稿 | AI | 管理外 |
+| `drafts/archive/` | 公開済み記事の元になったダンプ | 人間 | 管理外 |
+| `published/` | 公開済みの最終稿 | AI（清書稿がそのまま） | 管理外 |
 
-- **`drafts/raw/` 配下のファイルは絶対に上書き・編集しない。** 生素材はgit管理外（`.gitignore` に `drafts`）なので失うと復元できない。
+- **原稿は一切gitにコミットしない。** `drafts` と `published` は両方 `.gitignore` 済み。このリポジトリはpublicなので，有料記事の全文をコミットしてpushすると誰でも全文を読めてしまう。リポジトリで追跡してよいのは仕組みだけ（`.claude/` 配下・`CLAUDE.md`・`README.md`）。
+- `git add -A` や `git add .` は使わない。追加するファイルは必ず個別に指定する。
+- **`drafts/raw/` 配下のファイルは絶対に上書き・編集しない。** 生素材はgit管理外なので失うと復元できない。
+- `published/` 配下も同様にgit管理外でバックアップが無いため，削除・上書きしない。
 - `formatter` の出力先は必ず `drafts/ai/`。ファイル名は元ダンプと揃える（`drafts/raw/2026-08-10_980.md` → `drafts/ai/2026-08-10_980.md`）。
 - 元ダンプは公開後も削除せず `drafts/archive/` に残す。
 
@@ -55,14 +58,18 @@ KEETHさんのブログ・ニュースレター執筆ミッション用ワーク
 
 ```
 .claude/
-  skills/note-writing/SKILL.md   ← チャネル別ルール本体
+  skills/note-writing/
+    SKILL.md                     ← 表記ルール＋下位ルールへの索引
+    references/
+      channel-selection.md       ← チャネル判定（hearing-agentのみ読む）
+      channel-templates.md       ← チャネル別テンプレート（formatterのみ読む）
   agents/
     hearing-agent.md             ← ヒアリング担当
     fact-checker.md              ← ファクトチェック担当
     formatter.md                 ← 整形担当
-drafts/
+drafts/                          ← git管理外
   raw/                           ← 音声ダンプ（人間の生素材・編集禁止）
   ai/                            ← AI清書稿
   archive/                       ← 公開済み記事の元ダンプ
-published/                       ← 公開済み原稿の控え
+published/                       ← 公開済み原稿の控え・git管理外
 ```

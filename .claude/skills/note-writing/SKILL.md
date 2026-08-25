@@ -19,8 +19,8 @@ KEETHさんの音声ダンプを各チャネル向けの記事に仕上げるた
 
 | 読むファイル | 内容 | 読む担当 |
 | --- | --- | --- |
-| `references/channel-selection.md` | 判定シグナル，素材量による補正，提案の出し方 | `hearing-agent`（チャネル未指定のときのみ） |
-| `references/channel-templates.md` | 4チャネルの構成・トーン・文字数・有料区切り，文字数の調整方針 | `formatter`（整形するチャネルが決まってから） |
+| `references/channel-selection.md` | 判定順序，ズレ判定，除外ルール，判定シグナル，素材量による補正，提案の出し方 | `hearing-agent`（チャネル未指定のときのみ） |
+| `references/channel-templates.md` | 5チャネルの書式・文体・文字数・有料区切り | `formatter`（整形するチャネルが決まってから） |
 
 `fact-checker` はどちらも読む必要がない。上の表記ルールだけ守ればよい。
 

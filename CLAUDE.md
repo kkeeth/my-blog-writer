@@ -81,4 +81,6 @@ drafts/                          ← git管理外
   ai/                            ← AI清書稿
   archive/                       ← 公開済み記事の元ダンプ
 published/                       ← 公開済み原稿の控え・git管理外
+scripts/
+  new-draft.sh                   ← drafts/raw/ に空のダンプファイルを作る（AIを介さない手元用）
 ```

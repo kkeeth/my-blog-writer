@@ -32,7 +32,7 @@ KEETHさんの音声ダンプを各チャネル向けの記事に仕上げるた
 | 読むファイル | 内容 | 読む担当 |
 | --- | --- | --- |
 | `references/channel-selection.md` | 判定順序，ズレ判定，除外ルール，判定シグナル，素材量による補正，提案の出し方 | `hearing-agent`（チャネル未指定のときのみ） |
-| `references/channel-templates.md` | 5チャネルの書式・文体・文字数・有料区切り | `formatter`（整形するチャネルが決まってから） |
+| `references/channel-templates.md` | 全チャネル共通のAI臭い書き方の禁止事項，5チャネルの書式・文体・文字数・有料区切り | `formatter`（整形するチャネルが決まってから） |
 | `references/zure-sample.md` | 「ズレたままでいる」の文体見本（公開済み記事の全文と読み取りどころ） | `formatter`（`_zure` 案件のときのみ） |
 
 `fact-checker` はいずれも読む必要がない。上の表記ルールだけ守ればよい。

@@ -137,7 +137,11 @@ Substack ではこれに寄せる。上の構成にある「h2見出し」より
 ```
 ---
 
-仕事や家庭のこと，ちょっと表では言えない話などを[メンバーシップ](https://note.com/clown0082/membership)のほうで書いています．こんな感じで．
+これは「[ズレたままでいる](https://note.com/clown0082/m/ma2dc64a29c3a)」というマガジンの一本です．他の話もここに．
+https://note.com/clown0082/m/ma2dc64a29c3a
+
+表ではちょっと言いにくい本音寄りの話を書いているのが[メンバーシップ](https://note.com/clown0082/membership)です．気が向いたら覗いてみてください．
+https://note.com/clown0082/membership
 ```
 
 メンバーシップURLの正はここ。他のファイルに同じURLを重複して持たせない。
